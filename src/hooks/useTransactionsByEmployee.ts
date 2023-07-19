@@ -15,8 +15,7 @@ export function useTransactionsByEmployee(): TransactionsByEmployeeResult {
           employeeId,
         }
       )
-      if (data)
-        setTransactionsByEmployee(transactionsByEmployee ? [...transactionsByEmployee, ...data] : data)
+      setTransactionsByEmployee(data)
     },
     [fetchWithCache]
   )

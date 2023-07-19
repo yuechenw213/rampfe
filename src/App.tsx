@@ -77,21 +77,19 @@ export function App() {
         <div className="RampGrid">
           <Transactions transactions={transactions} />
 
-          {transactions !== null && (
-            <button
-              className="RampButton"
-              disabled={paginatedTransactionsUtils.loading}
-              onClick={async () => {
-                if (curEmployee === EMPTY_EMPLOYEE) {
-                  if (paginatedTransactions?.nextPage != null) await loadAllTransactions()
-                } else {
-                  await loadTransactionsByEmployee(curEmployee.id)
-                }
-              }}
-            >
-              View More
-            </button>
-          )}
+          {transactions !== null &&
+            curEmployee === EMPTY_EMPLOYEE &&
+            paginatedTransactions?.nextPage !== null && (
+              <button
+                className="RampButton"
+                disabled={paginatedTransactionsUtils.loading}
+                onClick={async () => {
+                  await loadAllTransactions()
+                }}
+              >
+                View More
+              </button>
+            )}
         </div>
       </main>
     </Fragment>
